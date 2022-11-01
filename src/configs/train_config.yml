@@ -7,11 +7,11 @@ submitting_to_aml: False
 
 # Loader params
 num_workers: 24
-max_steps: 5000
+max_steps: 100
 batch_size: 16
 
 num_neighbors: 7
-dataset_name: "cocostuff27"
+dataset_name: "directory"
 
 # Used if dataset_name is "directory"
 dir_dataset_name: "Data"

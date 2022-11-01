@@ -14,8 +14,8 @@ num_neighbors: 7
 dataset_name: "cocostuff27"
 
 # Used if dataset_name is "directory"
-dir_dataset_name: ~
-dir_dataset_n_classes: 5
+dir_dataset_name: "Data"
+dir_dataset_n_classes: 2
 
 has_labels: False
 crop_type: "five"

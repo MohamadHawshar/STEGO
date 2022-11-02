@@ -18,7 +18,7 @@ dir_dataset_name: "Data"
 dir_dataset_n_classes: 2
 
 has_labels: False
-crop_type: "five"
+crop_type: "None"
 crop_ratio: .5
 res: 224
 loader_crop_type: "center"

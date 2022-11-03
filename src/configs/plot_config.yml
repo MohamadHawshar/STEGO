@@ -14,7 +14,7 @@ max_steps: 5000
 num_neighbors: 7
 
 batch_size: 16
-dataset_name: "cocostuff27"
+dataset_name: "directory"
 crop_type: ~
 crop_ratio: .5
 res: 224

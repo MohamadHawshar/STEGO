@@ -7,7 +7,7 @@ submitting_to_aml: False
 
 # Loader params
 num_workers: 4
-max_steps: 5000
+max_steps: 6000
 batch_size: 16
 
 num_neighbors: 7

@@ -8,7 +8,7 @@ import torch.multiprocessing
 import torch.multiprocessing
 import torch.nn as nn
 from omegaconf import DictConfig, OmegaConf
-from pytorch_lightning.utilities.seed import seed_everything
+# from pytorch_lightning.utilities.seed import seed_everything
 from tqdm import tqdm
 
 
@@ -31,7 +31,7 @@ def my_app(cfg: DictConfig) -> None:
     os.makedirs(log_dir, exist_ok=True)
     os.makedirs(join(pytorch_data_dir, "nns"), exist_ok=True)
 
-    seed_everything(seed=0)
+    # seed_everything(seed=0)
 
     print(data_dir)
     print(cfg.output_root)
@@ -42,7 +42,7 @@ def my_app(cfg: DictConfig) -> None:
 
     # Uncomment these lines to run on custom datasets
     dataset_names = ["directory"]
-    crop_types = [None]
+    # crop_types = [None]
 
     res = 224
     n_batches = 16

@@ -4,7 +4,7 @@ from data import ContrastiveSegDataset
 import hydra
 import torch
 from omegaconf import DictConfig, OmegaConf
-from pytorch_lightning.utilities.seed import seed_everything
+# from pytorch_lightning.utilities.seed import seed_everything
 from torch.utils.data import DataLoader
 from torchvision.transforms.functional import five_crop, _get_image_size, crop
 from tqdm import tqdm
@@ -130,14 +130,14 @@ class RandomCropComputer(Dataset):
 @hydra.main(config_path="configs", config_name="train_config.yml")
 def my_app(cfg: DictConfig) -> None:
     print(OmegaConf.to_yaml(cfg))
-    seed_everything(seed=0, workers=True)
+    # seed_everything(seed=0, workers=True)
 
     # dataset_names = ["cityscapes", "cocostuff27"]
     # img_sets = ["train", "val"]
     # crop_types = ["five","random"]
     # crop_ratios = [.5, .7]
 
-    dataset_names = ["cityscapes"]
+    dataset_names = ["directory"]
     img_sets = ["train", "val"]
     crop_types = ["five"]
     crop_ratios = [.5]

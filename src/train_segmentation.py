@@ -288,11 +288,11 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
                 output = {k: v.detach().cpu() for k, v in outputs[output_num].items()}
 
                 fig, ax = plt.subplots(4, self.cfg.n_images, figsize=(self.cfg.n_images * 3, 4 * 3))
-                for i in range(self.cfg.n_images):
-                    ax[0, i].imshow(prep_for_plot(output["img"][i]))
-                    ax[1, i].imshow(self.label_cmap[output["label"][i]])
-                    ax[2, i].imshow(self.label_cmap[output["linear_preds"][i]])
-                    ax[3, i].imshow(self.label_cmap[self.cluster_metrics.map_clusters(output["cluster_preds"][i])])
+                # for i in range(self.cfg.n_images):
+                #     ax[0, i].imshow(prep_for_plot(output["img"][i]))
+                #     ax[1, i].imshow(self.label_cmap[output["label"][i]])
+                #     ax[2, i].imshow(self.label_cmap[output["linear_preds"][i]])
+                #     ax[3, i].imshow(self.label_cmap[self.cluster_metrics.map_clusters(output["cluster_preds"][i])])
                 ax[0, 0].set_ylabel("Image", fontsize=16)
                 ax[1, 0].set_ylabel("Label", fontsize=16)
                 ax[2, 0].set_ylabel("Linear Probe", fontsize=16)
@@ -407,7 +407,8 @@ def my_app(cfg: DictConfig) -> None:
 
     geometric_transforms = T.Compose([
         T.RandomHorizontalFlip(),
-        T.RandomResizedCrop(size=cfg.res, scale=(0.8, 1.0))
+        T.RandomVerticalFlip(),
+        # T.RandomResizedCrop(size=cfg.res, scale=(0.8, 1.0))
     ])
     photometric_transforms = T.Compose([
         T.ColorJitter(brightness=.3, contrast=.3, saturation=.3, hue=.1),
@@ -487,7 +488,8 @@ def my_app(cfg: DictConfig) -> None:
             ModelCheckpoint(
                 dirpath=join(checkpoint_dir, name),
                 every_n_train_steps=400,
-                save_top_k=2,
+                save_top_k=20,
+                # every_n_epochs = 10,
                 monitor="test/cluster/mIoU",
                 mode="max",
             )

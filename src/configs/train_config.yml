@@ -1,5 +1,5 @@
 output_root: '../'
-pytorch_data_dir: '/content/STEGO/src/'
+pytorch_data_dir: '.\'
 experiment_name: "exp1"
 log_dir: "cocostuff27"
 azureml_logging: False
@@ -7,8 +7,8 @@ submitting_to_aml: False
 
 # Loader params
 num_workers: 1
-max_steps: 2405
-batch_size: 16
+max_steps: 500
+batch_size: 1
 
 num_neighbors: 7
 dataset_name: "directory"

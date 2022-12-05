@@ -9,7 +9,7 @@ from omegaconf import DictConfig, OmegaConf
 import pytorch_lightning as pl
 from pytorch_lightning import Trainer
 from pytorch_lightning.loggers import TensorBoardLogger
-# from pytorch_lightning.utilities.seed import seed_everything
+from pytorch_lightning.utilities.seed import seed_everything
 import torch.multiprocessing
 import seaborn as sns
 from pytorch_lightning.callbacks import ModelCheckpoint
@@ -99,6 +99,8 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
 
         if self.cfg.dataset_name.startswith("cityscapes"):
             self.label_cmap = create_cityscapes_colormap()
+        elif self.cfg.dataset_name == "directory":
+            self.label_cmap = binary_colormap()
         else:
             self.label_cmap = create_pascal_label_colormap()
 
@@ -259,7 +261,7 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
         with torch.no_grad():
             feats, code = self.net(img)
             code = F.interpolate(code, label.shape[-2:], mode='bilinear', align_corners=False)
-
+            # Visualize the code output (70*320*320)
             linear_preds = self.linear_probe(code)
             linear_preds = linear_preds.argmax(1)
             self.linear_metrics.update(linear_preds, label)
@@ -400,7 +402,7 @@ def my_app(cfg: DictConfig) -> None:
     os.makedirs(log_dir, exist_ok=True)
     os.makedirs(checkpoint_dir, exist_ok=True)
 
-    # seed_everything(seed=0)
+    seed_everything(seed=0)
 
     print(data_dir)
     print(cfg.output_root)

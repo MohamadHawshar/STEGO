@@ -1,5 +1,5 @@
-output_root: '../'
-pytorch_data_dir: '/datadrive/pytorch-data/'
+output_root: '.\src\'
+pytorch_data_dir: '.\src\'
 experiment_name: "exp1"
 log_dir: "cleaning"
 
@@ -8,13 +8,17 @@ plot_movie: True
 
 
 # Loader params
-num_workers: 24
-max_steps: 5000
+num_workers: 1
+max_steps: 500
 
 num_neighbors: 7
 
-batch_size: 16
+batch_size: 1
 dataset_name: "directory"
+# Used if dataset_name is "directory"
+dir_dataset_name: "Aips_Guassian+TopHat"
+dir_dataset_n_classes: 2
+
 crop_type: ~
 crop_ratio: .5
 res: 224

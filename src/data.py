@@ -71,6 +71,11 @@ def create_cityscapes_colormap():
               (0, 0, 0)]
     return np.array(colors)
 
+def binary_colormap():
+    colors = [(255,255,255),
+              (0, 0, 0)]
+    return np.array(colors)
+
 
 class DirectoryDataset(Dataset):
     def __init__(self, root, path, image_set, transform, target_transform):
@@ -93,7 +98,7 @@ class DirectoryDataset(Dataset):
 
     def __getitem__(self, index):
         image_fn = self.img_files[index]
-        img = Image.open(join(self.img_dir, image_fn))
+        img = Image.open(join(self.img_dir, image_fn)).convert('RGB')
 
         if self.label_files is not None:
             label_fn = self.label_files[index]

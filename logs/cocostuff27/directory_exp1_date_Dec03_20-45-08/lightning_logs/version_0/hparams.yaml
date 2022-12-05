@@ -1,0 +1,134 @@
+n_classes: 2
+cfg:
+  output_root: ../
+  pytorch_data_dir: .\
+  experiment_name: exp1
+  log_dir: cocostuff27
+  azureml_logging: false
+  submitting_to_aml: false
+  num_workers: 1
+  max_steps: 500
+  batch_size: 1
+  num_neighbors: 7
+  dataset_name: directory
+  dir_dataset_name: Aips_Guassian+TopHat
+  dir_dataset_n_classes: 2
+  has_labels: false
+  crop_type: five
+  crop_ratio: 0.5
+  res: 224
+  loader_crop_type: center
+  extra_clusters: 0
+  use_true_labels: false
+  use_recalibrator: false
+  model_type: vit_small
+  arch: dino
+  use_fit_model: false
+  dino_feat_type: feat
+  projection_type: nonlinear
+  dino_patch_size: 8
+  granularity: 1
+  continuous: true
+  dim: 70
+  dropout: true
+  zero_clamp: true
+  lr: 0.0005
+  pretrained_weights: null
+  use_salience: false
+  stabalize: false
+  stop_at_zero: true
+  pointwise: true
+  feature_samples: 11
+  neg_samples: 5
+  aug_alignment_weight: 0.0
+  correspondence_weight: 1.0
+  neg_inter_weight: 0.63
+  pos_inter_weight: 0.25
+  pos_intra_weight: 0.67
+  neg_inter_shift: 0.46
+  pos_inter_shift: 0.12
+  pos_intra_shift: 0.18
+  rec_weight: 0.0
+  repulsion_weight: 0.0
+  crf_weight: 0.0
+  alpha: 0.5
+  beta: 0.15
+  gamma: 0.05
+  w1: 10.0
+  w2: 3.0
+  shift: 0.0
+  crf_samples: 1000
+  color_space: rgb
+  reset_probe_steps: null
+  n_images: 5
+  scalar_log_freq: 10
+  checkpoint_freq: 50
+  val_freq: 100
+  hist_freq: 100
+  full_name: cocostuff27/directory_exp1
+output_root: ../
+pytorch_data_dir: .\
+experiment_name: exp1
+log_dir: cocostuff27
+azureml_logging: false
+submitting_to_aml: false
+num_workers: 1
+max_steps: 500
+batch_size: 1
+num_neighbors: 7
+dataset_name: directory
+dir_dataset_name: Aips_Guassian+TopHat
+dir_dataset_n_classes: 2
+has_labels: false
+crop_type: five
+crop_ratio: 0.5
+res: 224
+loader_crop_type: center
+extra_clusters: 0
+use_true_labels: false
+use_recalibrator: false
+model_type: vit_small
+arch: dino
+use_fit_model: false
+dino_feat_type: feat
+projection_type: nonlinear
+dino_patch_size: 8
+granularity: 1
+continuous: true
+dim: 70
+dropout: true
+zero_clamp: true
+lr: 0.0005
+pretrained_weights: null
+use_salience: false
+stabalize: false
+stop_at_zero: true
+pointwise: true
+feature_samples: 11
+neg_samples: 5
+aug_alignment_weight: 0.0
+correspondence_weight: 1.0
+neg_inter_weight: 0.63
+pos_inter_weight: 0.25
+pos_intra_weight: 0.67
+neg_inter_shift: 0.46
+pos_inter_shift: 0.12
+pos_intra_shift: 0.18
+rec_weight: 0.0
+repulsion_weight: 0.0
+crf_weight: 0.0
+alpha: 0.5
+beta: 0.15
+gamma: 0.05
+w1: 10.0
+w2: 3.0
+shift: 0.0
+crf_samples: 1000
+color_space: rgb
+reset_probe_steps: null
+n_images: 5
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+full_name: cocostuff27/directory_exp1

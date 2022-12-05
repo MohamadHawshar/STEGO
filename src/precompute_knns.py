@@ -8,7 +8,7 @@ import torch.multiprocessing
 import torch.multiprocessing
 import torch.nn as nn
 from omegaconf import DictConfig, OmegaConf
-# from pytorch_lightning.utilities.seed import seed_everything
+from pytorch_lightning.utilities.seed import seed_everything
 from tqdm import tqdm
 
 
@@ -31,7 +31,7 @@ def my_app(cfg: DictConfig) -> None:
     os.makedirs(log_dir, exist_ok=True)
     os.makedirs(join(pytorch_data_dir, "nns"), exist_ok=True)
 
-    # seed_everything(seed=0)
+    seed_everything(seed=0)
 
     print(data_dir)
     print(cfg.output_root)
@@ -78,7 +78,7 @@ def my_app(cfg: DictConfig) -> None:
                         cfg=cfg,
                     )
 
-                    loader = DataLoader(dataset, 126, shuffle=False, num_workers=cfg.num_workers, pin_memory=False)
+                    loader = DataLoader(dataset, 16, shuffle=False, num_workers=cfg.num_workers, pin_memory=False)
 
                     with torch.no_grad():
                         normed_feats = get_feats(par_model, loader)

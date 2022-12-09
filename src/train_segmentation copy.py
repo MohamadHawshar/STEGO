@@ -99,8 +99,8 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
 
         if self.cfg.dataset_name.startswith("cityscapes"):
             self.label_cmap = create_cityscapes_colormap()
-        # elif self.cfg.dataset_name == "directory":
-        #     self.label_cmap = binary_colormap()
+        elif self.cfg.dataset_name == "directory":
+            self.label_cmap = binary_colormap()
         else:
             self.label_cmap = create_pascal_label_colormap()
 

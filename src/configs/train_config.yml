@@ -1,5 +1,5 @@
 output_root: '../'
-pytorch_data_dir: '.\'
+pytorch_data_dir: '/content/STEGO/src/'
 experiment_name: "exp1"
 log_dir: "cocostuff27"
 azureml_logging: False
@@ -7,20 +7,20 @@ submitting_to_aml: False
 
 # Loader params
 num_workers: 1
-max_steps: 500
-batch_size: 1
+max_steps: 2405
+batch_size: 16
 
 num_neighbors: 7
 dataset_name: "directory"
 
 # Used if dataset_name is "directory"
-dir_dataset_name: "Aips_Guassian+TopHat"
+dir_dataset_name: "Aips_Median+BgSub20"
 dir_dataset_n_classes: 2
 
 has_labels: False
-crop_type: "five"
+crop_type: "None"
 crop_ratio: .5
-res: 224
+res: 320
 loader_crop_type: "center"
 
 # Model Params

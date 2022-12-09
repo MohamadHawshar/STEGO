@@ -136,6 +136,7 @@ def my_app(cfg: DictConfig) -> None:
             fig.tight_layout()
 
             heatmap_intra, heatmap_inter = get_heatmaps(net, img, img_pos, query_points)
+            feat, attn, qkv = net.get_intermediate_feat(img, n=n)
             for point_num in range(query_points.shape[1]):
                 point = ((query_points[0, point_num, 0] + 1) / 2 * high_res).cpu()
                 img_point_h = point[0]

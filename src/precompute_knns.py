@@ -42,9 +42,10 @@ def my_app(cfg: DictConfig) -> None:
 
     # Uncomment these lines to run on custom datasets
     dataset_names = ["directory"]
-    # crop_types = [None]
+    crop_types = [None]
 
     res = 224
+    res = cfg.res
     n_batches = 16
 
     if cfg.arch == "dino":
@@ -79,6 +80,7 @@ def my_app(cfg: DictConfig) -> None:
                     )
 
                     loader = DataLoader(dataset, 16, shuffle=False, num_workers=cfg.num_workers, pin_memory=False)
+                    #loader = DataLoader(dataset, 16, shuffle=False, num_workers=cfg.num_workers, pin_memory=False)
 
                     with torch.no_grad():
                         normed_feats = get_feats(par_model, loader)

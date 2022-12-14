@@ -14,7 +14,7 @@ num_neighbors: 7
 dataset_name: "directory"
 
 # Used if dataset_name is "directory"
-dir_dataset_name: "Aips_Median+BgSub20"
+dir_dataset_name: "Aip"
 dir_dataset_n_classes: 2
 
 has_labels: False

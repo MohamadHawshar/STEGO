@@ -19,7 +19,6 @@ import random
 import colorsys
 import requests
 from io import BytesIO
-
 import skimage.io
 from skimage.measure import find_contours
 import matplotlib.pyplot as plt
@@ -107,7 +106,7 @@ if __name__ == '__main__':
     parser.add_argument("--image_path", default=None, type=str, help="Path of the image to load.")
     parser.add_argument("--image_size", default=(480, 480), type=int, nargs="+", help="Resize image.")
     parser.add_argument('--output_dir', default='.', help='Path where to save visualizations.')
-    parser.add_argument("--threshold", type=float, default=None, help="""We visualize masks
+    parser.add_argument("--threshold", type=float, default=0.4, help="""We visualize masks
         obtained by thresholding the self-attention maps to keep xx% of the mass.""")
     args = parser.parse_args()
 
@@ -126,8 +125,8 @@ if __name__ == '__main__':
         # remove `module.` prefix
         state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
         # remove `backbone.` prefix induced by multicrop wrapper
-        state_dict = {k.replace("backbone.", ""): v for k, v in state_dict.items()}
-        msg = model.load_state_dict(state_dict, strict=False)
+        state_dict = {k.replace("backbone.", ""): v for k, v in state_dict.items()}  
+        msg = model.load_state_dict(state_dict, strictny =False)
         print('Pretrained weights found at {} and loaded with msg: {}'.format(args.pretrained_weights, msg))
     else:
         print("Please use the `--pretrained_weights` argument to indicate the path of the checkpoint to evaluate.")
@@ -153,7 +152,8 @@ if __name__ == '__main__':
         print("Please use the `--image_path` argument to indicate the path of the image you wish to visualize.")
         print("Since no image path have been provided, we take the first image in our paper.")
         response = requests.get("https://dl.fbaipublicfiles.com/dino/img.png")
-        img = Image.open(BytesIO(response.content))
+        #img = Image.open(BytesIO(response.content))
+        img = Image.open(".\\src\\Aips_Guassian+TopHat\\imgs\\train\\m1.jpg")
         img = img.convert('RGB')
     elif os.path.isfile(args.image_path):
         with open(args.image_path, 'rb') as f:
@@ -176,8 +176,9 @@ if __name__ == '__main__':
     w_featmap = img.shape[-2] // args.patch_size
     h_featmap = img.shape[-1] // args.patch_size
 
-    attentions = model.get_last_selfattention(img.to(device))
-
+    attentions1 = model.get_last_selfattention(img.to(device))
+    feat, attentions, qkv = model.get_intermediate_feat(img.to(device), n=1)
+    attentions = attentions[0]
     nh = attentions.shape[1] # number of head
 
     # we keep only the output patch attention

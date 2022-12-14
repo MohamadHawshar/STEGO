@@ -20,7 +20,7 @@ dir_dataset_n_classes: 2
 has_labels: False
 crop_type: "None"
 crop_ratio: .5
-res: 320
+res: 480
 loader_crop_type: "center"
 
 # Model Params

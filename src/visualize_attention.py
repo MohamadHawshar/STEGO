@@ -153,7 +153,7 @@ if __name__ == '__main__':
         print("Since no image path have been provided, we take the first image in our paper.")
         response = requests.get("https://dl.fbaipublicfiles.com/dino/img.png")
         #img = Image.open(BytesIO(response.content))
-        img = Image.open(".\\src\\Aips_Guassian+TopHat\\imgs\\train\\m1.jpg")
+        img = Image.open(".\\src\\Aip\\imgs\\train\\brain_06_z35_roi00.jpg")
         img = img.convert('RGB')
     elif os.path.isfile(args.image_path):
         with open(args.image_path, 'rb') as f:

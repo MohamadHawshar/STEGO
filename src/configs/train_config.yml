@@ -8,19 +8,19 @@ submitting_to_aml: False
 # Loader params
 num_workers: 1
 max_steps: 2405
-batch_size: 16
+batch_size: 8
 
 num_neighbors: 7
 dataset_name: "directory"
 
 # Used if dataset_name is "directory"
-dir_dataset_name: "Aip"
+dir_dataset_name: "Aips_Guassian+TopHat"
 dir_dataset_n_classes: 2
 
 has_labels: False
 crop_type: "None"
 crop_ratio: .5
-res: 480
+res: 224
 loader_crop_type: "center"
 
 # Model Params

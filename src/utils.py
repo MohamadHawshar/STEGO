@@ -11,7 +11,7 @@ import torch.nn.functional as F
 import wget
 from PIL import Image
 from scipy.optimize import linear_sum_assignment
-from torch._six import string_classes
+#from torch._six import string_classes
 from torch.utils.data import DataLoader
 from torch.utils.data._utils.collate import np_str_obj_array_pattern, default_collate_err_msg_format
 from torchmetrics import Metric
